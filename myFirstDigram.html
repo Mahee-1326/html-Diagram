@@ -2,10 +2,61 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <h1 style=" font-family:florence,cursive;color:blue ">My first diagram</h1>
+         <h1>My first diagram</h1>
+        <style>
+            h1{
+                background-clip:text;
+                -webkit-background-clip:text; 
+                animation-name: texts;
+                animation-duration: 5s;
+                animation-delay: 2s;
+                animation-iteration-count: infinite;
+                animation-direction: linear;
+                font-family:"charm",cursive;
+            }
+            @keyframes texts{
+                from {
+                    color:blue;
+                    font-size:15px;
+                }
+                to{
+                    color:pink;
+                    font-size:35px;
+                }
+            }
+        svg {
+            background-clip:picture;
+            -webkit-background-clip:picture; 
+            animation-name: diagram;
+            animation-duration: 4s;
+            animation-delay: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: linear;
+         }
+      </style>
+      
+      
     </head>
-    <body bgcolor = "skyblue">
-    <animate attributeName = "x" from =" 0" to = "100" dur = "5s" fill = "freez" repeatCount = "infinite">
+    <body bgcolor = "skyblue" align = "center">
+    
+        <div id ="myAnimation"></div>
+    
+        <script>
+                    function myMove() {
+                      var elem = document.getElementById("myAnimation");   
+                      var pos = 0;
+                      var id = setInterval(frame, 10);
+                      function frame() {
+                        if (pos == 150) {
+                          clearInterval(id);
+                        } else {
+                          pos++; 
+                          elem.style.top = pos + 'px'; 
+                          elem.style.left = pos + 'px'; 
+                        }
+                      }
+                    }
+        </script>
         <svg width = 280 height = 350 >
             <circle cx = "115" cy = "130" r = "45" fill = "lightpink" style =" stroke:green"/>
             <circle cx = "95" cy = "115" r = "8" fill = "black" style = "stroke:white;stroke-linecap:round"/>
@@ -19,7 +70,10 @@
         <line x1 = "70" y1 = "200" x2 = "10" y2 = "250" style = "stroke:green;stroke-linecap:round;stroke-width:20"/>
           <line x1 = "160" y1 = "200" x2 = "220" y2 = "250" style = "stroke:green;stroke-linecap:round;stroke-width:20"/>
           </svg>
-          </animate>
+    </div>
+    <p>
+        <button onclick="myMove()">Click Me</button> 
+    </p>
     </body>
     
 </html>
